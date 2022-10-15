@@ -27,6 +27,9 @@ int main() {
     io;
     Solution s;
     vector<int> target = {1, 3};
-    vector<int> v = s.buildArray(target, 3);
+    vector<string> v = s.buildArray(target, 3);
+    for (string s : v) {
+        cout << s << " ";
+    }
     return 0;
 }
