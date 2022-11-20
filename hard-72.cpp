@@ -17,6 +17,8 @@ public:
     {
         int l1 = word1.size();
         int l2 = word2.size();
+        // dp[i][j]代表word1的0到i和word2的0到j部分的编辑距离
+        // 一维是状态压缩之后的结果
         int dp[l2 + 1];
         for (int i = 0; i <= l2; ++i)
             dp[i] = i;
@@ -44,5 +46,6 @@ int main()
     io;
     Solution s;
     cout << s.minDistance("horse", "ros") << endl;
+    cout << s.minDistance("intention", "execution") << endl;
     return 0;
 }

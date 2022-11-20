@@ -34,7 +34,11 @@ public:
 int main() {
     io;
     Solution s;
-    vi v = {1};
-    cout << s.coinChange(v, 0) << endl;
+    vi v1 = {1, 2, 5};
+    cout << s.coinChange(v1, 11) << endl;
+    vi v2 = {2};
+    cout << s.coinChange(v2, 3) << endl;
+    vi v3 = {1};
+    cout << s.coinChange(v3, 0) << endl;
     return 0;
 }
