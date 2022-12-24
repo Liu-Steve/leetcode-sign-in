@@ -1,32 +1,42 @@
-#include <iostream>
-const long long C = 998244353;
+#include "bits/stdc++.h"
+#define io                       \
+    ios::sync_with_stdio(false); \
+    cin.tie(0);                  \
+    cout.tie(0)
 using namespace std;
 
-//(a^b)%C
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<string> vs;
+typedef vector<vector<int>> vv;
+
+const long long MOD = 998244353;
+
+//(a^b)%MOD
 long long qpow(long long a, long long b)
 {
     long long ans = 1;
-    while(b)
+    while (b)
     {
-        if(b & 1)   ans = (ans * a) % C;
+        if (b & 1)
+            ans = (ans * a) % MOD;
         b >>= 1;
-        a = (a * a) % C;
+        a = (a * a) % MOD;
     }
-    return ans % C;
+    return ans % MOD;
 }
 
-//(a/b)%C
+//(a/b)%MOD
 long long frac_mod(long long a, long long b)
 {
-    long long ans = a % C;
-    ans *= qpow(b, C - 2);
-    ans = ans % C;
+    long long ans = a % MOD;
+    ans *= qpow(b, MOD - 2);
+    ans = ans % MOD;
     return ans;
 }
 
 int main()
 {
-    ios::sync_with_stdio(false);
-    cout << frac_mod(1, 1) << endl;
+    io;
     return 0;
 }
