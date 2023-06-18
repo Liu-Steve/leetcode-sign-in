@@ -29,7 +29,5 @@ int main()
 {
     io;
     Solution s;
-    vv v1 = {{2, 1}, {3, 1}, {1, 4}};
-    cout << s.minNumberOfSemesters(4, v1, 2) << endl;
     return 0;
 }
