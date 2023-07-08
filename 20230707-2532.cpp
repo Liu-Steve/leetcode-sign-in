@@ -82,66 +82,6 @@ public:
     }
 };
 
-// class Solution
-// {
-// public:
-//     int findCrossingTime(int n, int k, const vector<vector<int>> &time)
-//     {
-//         vector<bool> isRight(k, false);
-
-//         auto cmp = [&](int idx1, int idx2)
-//         {
-//             if (isRight[idx1] != isRight[idx2])
-//                 return isRight[idx1] < isRight[idx2];
-//             if (time[idx1][0] + time[idx1][2] != time[idx2][0] + time[idx2][2])
-//                 return time[idx1][0] + time[idx1][2] < time[idx2][0] + time[idx2][2];
-//             return idx1 < idx2;
-//         };
-
-//         auto cmp2 = [&](pair<int, int> p1, pair<int, int> p2)
-//         {
-//             if (p1.first != p2.first)
-//                 return p1.first > p2.first;
-//             return cmp(p1.second, p2.second);
-//         };
-
-//         priority_queue<int, vector<int>, decltype(cmp)> wait(cmp);
-//         priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(cmp2)> work(cmp2);
-
-//         for (int i = 0; i < k; ++i)
-//             work.emplace(0, i);
-
-//         int now = 0;
-//         while (!wait.empty() || n > 0)
-//         {
-//             if (!work.empty() && work.top().first > now) // bridge is empty
-//                 now = work.top().first;
-//             while (!work.empty() && work.top().first <= now)
-//             {
-//                 wait.emplace(work.top().second);
-//                 work.pop();
-//             }
-//             int move = wait.top(); // which worker to move
-//             wait.pop();
-//             if (!isRight[move])
-//             {
-//                 if (n == 0)
-//                     continue;
-//                 isRight[move] = true;
-//                 now += time[move][0];
-//                 work.emplace(now + time[move][1], move);
-//             }
-//             else
-//             {
-//                 isRight[move] = false;
-//                 now += time[move][2];
-//                 work.emplace(now + time[move][3], move);
-//             }
-//         }
-
-//     }
-// };
-
 int main()
 {
     io;
