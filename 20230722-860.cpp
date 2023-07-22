@@ -18,29 +18,6 @@ typedef vector<pr> vp;
 typedef unordered_set<int> hm;
 typedef unordered_map<int, int> memory;
 
-// class Solution {
-// public:
-//     bool lemonadeChange(vector<int>& bills) {
-//         int b5 = 0;
-//         int b10 = 0;
-//         int b20 = 0;
-//         for (int b : bills)
-//             if (b == 5)
-//                 b5++;
-//             else if (b == 10)
-//                 b10++;
-//             else if (b == 20)
-//                 b20++;
-//         if (b10 > b5)
-//             return false;
-//         if (b20 > b10 && 3 * b20 - b10 > b5)
-//             return false;
-//         if (b20 <= b10 && b20 > b5 - b10)
-//             return false;
-//         return true;
-//     }
-// };
-
 class Solution
 {
 public:
