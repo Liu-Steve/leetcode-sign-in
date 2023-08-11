@@ -18,27 +18,6 @@ typedef vector<pr> vp;
 typedef unordered_set<int> hm;
 typedef unordered_map<int, int> memory;
 
-// class Solution {
-// public:
-//     int minFallingPathSum(vector<vector<int>>& grid) {
-//         int n = grid.size();
-//         vector<int> dp1(grid[0]), dp2(n);
-//         for (int i = 1; i < n; ++i)
-//         {
-//             dp2[0] = dp2[n - 1] = INT32_MAX;
-//             for (int j = 1; j < n; ++j)
-//                 dp2[j] = dp1[j - 1] + grid[i][j];
-//             for (int j = 0; j < n - 1; ++j)
-//                 dp2[j] = min(dp1[j + 1] + grid[i][j], dp2[j]);
-//             swap(dp1, dp2);
-//         }
-//         int ans = dp1[0];
-//         for (int i = 1; i < n; ++i)
-//             ans = min(ans, dp1[i]);
-//         return ans;
-//     }
-// };
-
 class Solution {
 public:
     int minFallingPathSum(vector<vector<int>>& grid) {
