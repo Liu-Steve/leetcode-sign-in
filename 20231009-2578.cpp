@@ -1,0 +1,50 @@
+#include "bits/stdc++.h"
+#define io                       \
+    ios::sync_with_stdio(false); \
+    cin.tie(0);                  \
+    cout.tie(0)
+using namespace std;
+
+#define MOD 1000000007LL
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<char> vc;
+typedef vector<bool> vb;
+typedef vector<string> vs;
+typedef vector<vi> vv;
+typedef pair<int, int> pr;
+typedef vector<pr> vp;
+typedef unordered_set<int> hm;
+typedef unordered_map<int, int> memory;
+
+class Solution
+{
+public:
+    int splitNum(int num)
+    {
+        vector<int> b;
+        while (num)
+        {
+            b.emplace_back(num % 10);
+            num /= 10;
+        }
+        sort(b.begin(), b.end());
+        int num1 = 0;
+        int num2 = 0;
+        for (int n : b)
+        {
+            num1 *= 10;
+            num1 += n;
+            swap(num1, num2);
+        }
+        return num1 + num2;
+    }
+};
+
+int main()
+{
+    io;
+    Solution s;
+    return 0;
+}
