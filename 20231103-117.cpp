@@ -53,7 +53,7 @@ public:
                     {
                         if (!nxt_root)
                             nxt_root = child;
-                        p = p->next = child; // 连接子节点的下一个节点}
+                        p = p->next = child; // 连接子节点的下一个节点
                     }
                     root = nxt_root; // 去下一层
                 }
