@@ -60,14 +60,14 @@ public:
     {
         vector<vector<int>> ans;
         vector<int> path;
-
+        sort(candidates.begin(), candidates.end());
         function<void(int, int)> dfs = [&](int i, int left) {
             if (left == 0)
             {
                 ans.push_back(path);
                 return;
             }
-            if (i == candidates.size() || left < 0)
+            if (i == candidates.size() || left < candidates[i])
                 return;
             dfs(i + 1, left);
             path.push_back(candidates[i]);
