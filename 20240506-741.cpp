@@ -62,7 +62,7 @@ public:
         vector<vv> mem(n * 2 - 1, vv(n, vi(n, -1)));
         function<int(int, int, int)> dfs = [&](int t, int j, int k)
         {
-            if (j < 0 || k < 0 || t < j || t < k || grid[t - j] < 0 || grid[t - k] < 0)
+            if (j < 0 || k < 0 || t < j || t < k || grid[t - j][j] < 0 || grid[t - k][k] < 0)
                 return INT_MIN;
             if (t == 0)
                 return grid[0][0];
@@ -74,6 +74,7 @@ public:
                        dfs(t - 1, j - 1, k),
                        dfs(t - 1, j - 1, k - 1)}) +
                   grid[t - j][j] + (k != j ? grid[t - k][k] : 0);
+            return res;
         };
         return max(0, dfs(n * 2 - 2, n - 1, n - 1));
     }
