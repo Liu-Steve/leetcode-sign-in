@@ -65,21 +65,16 @@ public:
             nei[e[0]].emplace_back(e[1], e[2] % signalSpeed);
             nei[e[1]].emplace_back(e[0], e[2] % signalSpeed);
         }
-        unordered_map<int, vector<int>> mem;
-        function<vector<int>(int, int, int)> dfs = [&](int a, int b, int w) -> vector<int>{
-            int key = (a << 10) | b;
-            if (mem.count(key))
-                return mem[key];
-            vector<int> cnt(signalSpeed);
+        function<int(int, int, int)> dfs = [&](int a, int b, int w) -> int{
+            int cnt = 0;
             for (auto [c, ww] : nei[b])
             {
                 if (c == a)
                     continue;
-                vector<int> subcnt = dfs(b, c, ww);
-                for (int i = 0; i < signalSpeed; ++i)
-                    cnt[i] += subcnt[(i + w) % signalSpeed];
+                cnt += dfs(b, c, (w + ww) % signalSpeed);
             }
-            mem[key] = cnt;
+            if (w == 0)
+                cnt++;
             return cnt;
         };
         vector<int> ans(n);
@@ -88,9 +83,9 @@ public:
             int sum = 0;
             for (auto [b, w] : nei[i])
             {
-                vector<int> cnt = dfs(i, b, w);
-                ans[i] += sum * cnt[0];
-                sum += cnt[0];
+                int cnt = dfs(i, b, w);
+                ans[i] += sum * cnt;
+                sum += cnt;
             }
         }
         return ans;
