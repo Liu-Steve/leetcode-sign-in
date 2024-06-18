@@ -1,0 +1,104 @@
+#include "bits/stdc++.h"
+#define io                       \
+    ios::sync_with_stdio(false); \
+    cin.tie(0);                  \
+    cout.tie(0)
+using namespace std;
+
+struct TreeNode
+{
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+class Node
+{
+public:
+    int val;
+    vector<Node *> children;
+
+    Node() {}
+
+    Node(int _val)
+    {
+        val = _val;
+    }
+
+    Node(int _val, vector<Node *> _children)
+    {
+        val = _val;
+        children = _children;
+    }
+};
+
+#define MOD 1000000007LL
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<char> vc;
+typedef vector<bool> vb;
+typedef vector<string> vs;
+typedef vector<vi> vv;
+typedef vector<vl> vvl;
+typedef vector<vb> vvb;
+typedef vector<vc> vvc;
+typedef pair<int, int> pr;
+typedef pair<ll, ll> prl;
+typedef vector<pr> vp;
+typedef unordered_set<int> hm;
+typedef unordered_map<int, int> memory;
+
+class Solution
+{
+public:
+    string discountPrices(string sentence, int discount)
+    {
+        stringstream ss;
+        stringstream is;
+        is << sentence;
+        bool start = true;
+        while (!is.eof())
+        {
+            string word;
+            is >> word;
+            if (!start)
+                ss << ' ';
+            start = false;
+            if (word[0] != '$' || word.size() < 2)
+            {
+                ss << word;
+                continue;
+            }
+            double num = 0;
+            bool f = false;
+            for (int i = 1; i < word.size(); ++i)
+            {
+                if (word[i] < '0' || word[i] > '9')
+                {
+                    f = true;
+                    ss << word;
+                    break;
+                }
+                num *= 10;
+                num += word[i] - '0';
+            }
+            if (f)
+                continue;
+            num *= 100 - discount;
+            num /= 100;
+            ss << fixed << setprecision(2) << '$' << num;
+        }
+        return ss.str();
+    }
+};
+
+int main()
+{
+    io;
+    return 0;
+}
