@@ -67,18 +67,26 @@ class Solution
 public:
     int minimumCost(int m, int n, vector<int> &horizontalCut, vector<int> &verticalCut)
     {
-        sort(horizontalCut.begin(), horizontalCut.end(), greater<int>());
-        sort(verticalCut.begin(), verticalCut.end(), greater<int>());
-        vector<long long> dp(n);
-        for (int i = 0; i < n - 1; ++i)
-            dp[i + 1] = dp[i] + verticalCut[i];
-        for (int i = 1; i < m; ++i)
+        sort(horizontalCut.begin(), horizontalCut.end());
+        sort(verticalCut.begin(), verticalCut.end());
+        long long h = 1, v = 1;
+        long long res = 0;
+        while (!horizontalCut.empty() || !verticalCut.empty())
         {
-            dp[0] += horizontalCut[i - 1];
-            for (long long j = 1; j < n; ++j)
-                dp[j] = min(dp[j - 1] + verticalCut[j - 1] * (i + 1), dp[j] + horizontalCut[i - 1] * (j + 1));
+            if (verticalCut.empty() || !horizontalCut.empty() && horizontalCut.back() > verticalCut.back())
+            {
+                res += horizontalCut.back() * h;
+                horizontalCut.pop_back();
+                v++;
+            }
+            else
+            {
+                res += verticalCut.back() * v;
+                verticalCut.pop_back();
+                h++;
+            }
         }
-        return dp[n - 1];
+        return res;
     }
 };
 
