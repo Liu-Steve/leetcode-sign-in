@@ -93,7 +93,6 @@ public:
                 break;
             ans += qpow(2, p - i);
             ans %= MOD;
-            cout << ans << ' ' << i << ' ' << p << endl;
         }
         return ans;
     }
