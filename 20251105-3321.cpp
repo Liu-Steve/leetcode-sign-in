@@ -65,13 +65,13 @@ constexpr long long MOD = 1000000007LL;
 class Solution
 {
 public:
-    vector<int> findXSum(vector<int> &nums, int k, int x)
+    vector<long long> findXSum(vector<int> &nums, int k, int x)
     {
         int n = nums.size();
         unordered_map<int, int> cnt;
-        int sum = 0;
-        vector<int> ans;
-        set<pair<int, int>> small, large;
+        long long sum = 0;
+        vector<long long> ans;
+        set<pair<long long, long long>> small, large;
         for (int i = 0; i < k; ++i)
             cnt[nums[i]]++;
         for (auto [key, val] : cnt)
@@ -86,8 +86,8 @@ public:
         ans.push_back(sum);
         for (int i = k; i < n; ++i)
         {
-            pair<int, int> target1 = {cnt[nums[i]], nums[i]};
-            pair<int, int> target2 = {cnt[nums[i - k]], nums[i - k]};
+            pair<long long, long long> target1 = {cnt[nums[i]], nums[i]};
+            pair<long long, long long> target2 = {cnt[nums[i - k]], nums[i - k]};
             cnt[nums[i]]++;
             cnt[nums[i - k]]--;
             if (!large.empty() && target1 >= *large.begin())
