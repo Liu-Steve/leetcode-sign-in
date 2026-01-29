@@ -1,43 +1,45 @@
-#include "bits/stdc++.h"
 #include <cstdint>
 #include <vector>
-#define io                                                                     \
-  ios::sync_with_stdio(false);                                                 \
-  cin.tie(0);                                                                  \
-  cout.tie(0)
+
+#include "bits/stdc++.h"
+#define io                       \
+    ios::sync_with_stdio(false); \
+    cin.tie(0);                  \
+    cout.tie(0)
 using namespace std;
 
 struct TreeNode {
-  int val;
-  TreeNode *left;
-  TreeNode *right;
-  TreeNode() : val(0), left(nullptr), right(nullptr) {}
-  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right)
-      : val(x), left(left), right(right) {}
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
 class Node {
 public:
-  int val;
-  vector<Node *> children;
+    int val;
+    vector<Node *> children;
 
-  Node() {}
+    Node() {}
 
-  Node(int _val) { val = _val; }
+    Node(int _val) {
+        val = _val;
+    }
 
-  Node(int _val, vector<Node *> _children) {
-    val = _val;
-    children = _children;
-  }
+    Node(int _val, vector<Node *> _children) {
+        val = _val;
+        children = _children;
+    }
 };
 
 struct ListNode {
-  int val;
-  ListNode *next;
-  ListNode() : val(0), next(nullptr) {}
-  ListNode(int x) : val(x), next(nullptr) {}
-  ListNode(int x, ListNode *next) : val(x), next(next) {}
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
 typedef long long ll;
@@ -60,18 +62,18 @@ constexpr long long MOD = 1000000007LL;
 
 class Solution {
 public:
-  int minimumDifference(vector<int> &nums, int k) {
-    sort(nums.begin(), nums.end());
-    int ans = INT32_MAX;
-    for (int i = k - 1; i < nums.size(); ++i) {
-      ans = min(ans, nums[i] - nums[i - k + 1]);
+    int minimumDifference(vector<int> &nums, int k) {
+        sort(nums.begin(), nums.end());
+        int ans = INT32_MAX;
+        for (int i = k - 1; i < nums.size(); ++i) {
+            ans = min(ans, nums[i] - nums[i - k + 1]);
+        }
+        return ans;
     }
-    return ans;
-  }
 };
 
 int main() {
-  io;
-  Solution s;
-  return 0;
+    io;
+    Solution s;
+    return 0;
 }
