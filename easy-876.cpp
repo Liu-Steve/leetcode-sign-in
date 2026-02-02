@@ -39,20 +39,34 @@ struct ListNode {
     ListNode(int x, ListNode* next) : val(x), next(next) {}
 };
 
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<char> vc;
+typedef vector<bool> vb;
+typedef vector<string> vs;
+typedef vector<vi> vv;
+typedef vector<vl> vvl;
+typedef vector<vb> vvb;
+typedef vector<vc> vvc;
+typedef pair<int, int> pr;
+typedef pair<ll, ll> prl;
+typedef vector<pr> vp;
+typedef unordered_set<int> hm;
+typedef unordered_map<ll, int> memory;
+
 constexpr long long MOD = 1000000007LL;
 
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
-        ListNode* p1 = nullptr;
-        ListNode* p2 = head;
-        while (p2 != nullptr) {
-            ListNode* p3 = p2->next;
-            p2->next = p1;
-            p1 = p2;
-            p2 = p3;
+    ListNode* middleNode(ListNode* head) {
+        ListNode* fast = head;
+        ListNode* slow = head;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
         }
-        return p1;
+        return slow;
     }
 };
 
