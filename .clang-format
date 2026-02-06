@@ -22,4 +22,5 @@ Cpp11BracedListStyle: true
 AlignAfterOpenBracket: Align
 AllowAllParametersOfDeclarationOnNextLine: true
 AllowShortFunctionsOnASingleLine: Empty
+AllowShortLambdasOnASingleLine: Empty
 SortIncludes: true
