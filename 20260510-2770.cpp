@@ -1,7 +1,4 @@
 #include <bits/stdc++.h>
-
-#include <map>
-#include <vector>
 #define io                       \
     ios::sync_with_stdio(false); \
     cin.tie(0);                  \

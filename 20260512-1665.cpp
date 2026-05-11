@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+
+#include <vector>
 #define io                       \
     ios::sync_with_stdio(false); \
     cin.tie(0);                  \
@@ -59,18 +61,14 @@ constexpr long long MOD = 1000000007LL;
 
 class Solution {
 public:
-    vector<int> separateDigits(vector<int>& nums) {
-        vector<int> ans;
-        for (int num : nums) {
-            stack<int> st;
-            while (num) {
-                st.push(num % 10);
-                num /= 10;
-            }
-            while (!st.empty()) {
-                ans.push_back(st.top());
-                st.pop();
-            }
+    int minimumEffort(vector<vector<int>>& tasks) {
+        sort(tasks.begin(), tasks.end(), [&](vector<int>& t1, vector<int>& t2) {
+            return t1[1] - t1[0] < t2[1] - t2[0];
+        });
+        int ans = 0;
+        for (auto& t : tasks) {
+            int d = t[1] - t[0];
+            ans = max(ans + t[0], t[1]);
         }
         return ans;
     }
